@@ -1,3 +1,13 @@
+---
+title: Technology Architecture
+description: Hybrid cloud and infrastructure architecture supporting the Samriddhi platform.
+order: 12
+category: architecture-definition
+image: /images/technology_arc.png
+status: Review
+version: 1.0
+---
+
 3.4 Technology Architecture
 Overview
 

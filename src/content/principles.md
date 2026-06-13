@@ -1,4 +1,13 @@
 
+---
+title: Architecture Principles
+description: Guiding principles governing architecture decisions and implementation.
+order: 4
+category: architecture-vision
+status: Review
+version: 1.0
+---
+
 
 Principle 1 — Evidence-First Operations
 

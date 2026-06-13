@@ -1,3 +1,13 @@
+---
+title: Integration Architecture
+description: API-first integration architecture for internal and external ecosystem communication.
+order: 11
+category: architecture-definition
+image: /images/integration_arc.png
+status: Review
+version: 1.0
+---
+
 Integration Architecture
 Overview
 

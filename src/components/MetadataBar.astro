@@ -1,0 +1,90 @@
+---
+const {
+  category,
+  version,
+  status,
+} = Astro.props as {
+  category: string;
+  version: string;
+  status: 'Draft' | 'Review' | 'Approved';
+};
+
+const statusClass = `status-${status.toLowerCase()}`;
+---
+
+<section class="metadata-bar" aria-label="Document metadata">
+  <div class="item">
+    <span class="label">Category</span>
+    <span class="value">{category}</span>
+  </div>
+
+  <div class="item">
+    <span class="label">Version</span>
+    <span class="value">{version}</span>
+  </div>
+
+  <div class:list={["item", "status", statusClass]}>
+    <span class="label">Status</span>
+    <span class="value">{status}</span>
+  </div>
+</section>
+
+<style>
+  .metadata-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid #d6deea;
+    border-radius: 0.5rem;
+    background: #f7f9fc;
+  }
+
+  .item {
+    min-width: 10rem;
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .label {
+    color: #5f6c7b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .value {
+    color: #182230;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .status .value {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: #ffffff;
+  }
+
+  .status-draft .value {
+    color: #8a5a00;
+    border-color: #f1d39b;
+    background: #fff7e6;
+  }
+
+  .status-review .value {
+    color: #183153;
+    border-color: #b7c6db;
+    background: #eaf1fb;
+  }
+
+  .status-approved .value {
+    color: #1f5d35;
+    border-color: #b8dfc3;
+    background: #e9f7ee;
+  }
+</style>

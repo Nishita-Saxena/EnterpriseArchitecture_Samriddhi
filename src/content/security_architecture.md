@@ -1,3 +1,13 @@
+---
+title: Security Architecture
+description: Zero Trust security architecture for the Samriddhi platform.
+order: 13
+category: architecture-definition
+image: /images/security_arc.png
+status: Review
+version: 1.0
+---
+
 Security Architecture
 Overview
 

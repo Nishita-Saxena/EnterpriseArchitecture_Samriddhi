@@ -1,3 +1,12 @@
+---
+title: Gap Analysis
+description: Current-state to target-state architecture gap assessment.
+order: 18
+category: implementation
+status: Review
+version: 1.0
+---
+
 4. Domain-Wise Gap Analysis:
 
 4.1 Business Domain

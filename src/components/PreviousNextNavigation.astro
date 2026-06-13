@@ -1,0 +1,58 @@
+---
+import { getPreviousNext } from '../lib/navigation';
+
+const { title } = Astro.props as {
+  title: string;
+};
+
+const { previous, next } = getPreviousNext(title);
+---
+
+<nav class="previous-next" aria-label="Previous and next document">
+  <div class="item">
+    <span class="label">Previous Document</span>
+    {previous ? <a href={previous.route}>{previous.title}</a> : <span class="empty">None</span>}
+  </div>
+
+  <div class="item align-end">
+    <span class="label">Next Document</span>
+    {next ? <a href={next.route}>{next.title}</a> : <span class="empty">None</span>}
+  </div>
+</nav>
+
+<style>
+  .previous-next {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #d6deea;
+  }
+
+  .item {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .align-end {
+    text-align: right;
+  }
+
+  .label {
+    color: #5f6c7b;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: #183153;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .empty {
+    color: #8a97a8;
+  }
+</style>

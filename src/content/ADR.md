@@ -1,3 +1,12 @@
+---
+title: Architecture Decision Records
+description: Architecture decisions governing the Samriddhi platform.
+order: 14
+category: architecture-governance
+status: Review
+version: 1.0
+---
+
 Architecture Decision Records (ADR):
 
 ADR-001: Federated Multi-Tier Governance Architecture

@@ -1,3 +1,13 @@
+---
+title: Stakeholder Analysis
+description: Stakeholder groups, interests, concerns, and engagement approach.
+order: 3
+category: architecture-vision
+image: /images/stakeholder_interaction.jpeg
+status: Review
+version: 1.0
+---
+
 
 STAKEHOLDER ANALYSIS:
 

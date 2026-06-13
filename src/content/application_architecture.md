@@ -1,3 +1,13 @@
+---
+title: Application Architecture
+description: Microservices-based application architecture for the Samriddhi platform.
+order: 10
+category: architecture-definition
+image: /images/application_arc.png
+status: Review
+version: 1.0
+---
+
 Application Architecture Overview
 
 The Samriddhi application architecture follows a microservices-based, API-first design that enables independent deployment, scalability, and operational resilience. Each application service owns its business capability and communicates with other services exclusively through APIs and event-driven interactions.

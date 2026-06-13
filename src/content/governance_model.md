@@ -1,3 +1,12 @@
+---
+title: Governance Model
+description: Decision-making and control framework for the Samriddhi programme.
+order: 15
+category: architecture-governance
+status: Review
+version: 1.0
+---
+
 # Governance Model
 
 ## Governance Overview

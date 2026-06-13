@@ -1,0 +1,98 @@
+---
+const { image, title } = Astro.props as {
+  image?: string;
+  title: string;
+};
+
+const dialogId = `diagram-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+---
+
+<section class="diagram-viewer" aria-label="Architecture diagram">
+  {image ? (
+    <>
+      <button class="diagram-button" type="button" data-diagram-open={dialogId} aria-label={`Open ${title} diagram`}>
+        <img src={image} alt={`${title} diagram`} />
+      </button>
+
+      <dialog class="diagram-dialog" id={dialogId} aria-label={`${title} diagram zoom view`}>
+        <form method="dialog" class="dialog-shell">
+          <button class="close-button" value="close" aria-label="Close diagram">Close</button>
+          <img src={image} alt={`${title} diagram zoomed`} />
+        </form>
+      </dialog>
+    </>
+  ) : null}
+</section>
+
+<script>
+  const buttons = document.querySelectorAll('[data-diagram-open]');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const dialogId = button.getAttribute('data-diagram-open');
+      const dialog = dialogId ? (document.getElementById(dialogId) as HTMLDialogElement | null) : null;
+
+      if (dialog && 'showModal' in dialog) {
+        dialog.showModal();
+      }
+    });
+  });
+</script>
+
+<style>
+  .diagram-viewer {
+    width: 100%;
+  }
+
+  .diagram-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.2s ease;
+  }
+
+  .diagram-button img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .diagram-button:hover img {
+  transform: scale(1.01);
+  }
+  .diagram-dialog {
+    width: min(96vw, 1200px);
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0;
+    box-shadow: 0 20px 50px rgba(16, 24, 40, 0.24);
+  }
+
+  .diagram-dialog::backdrop {
+    background: rgba(10, 20, 35, 0.65);
+  }
+
+  .dialog-shell {
+    margin: 0;
+    padding: 1rem;
+    background: #ffffff;
+  }
+
+  .dialog-shell img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #d6deea;
+    border-radius: 0.5rem;
+  }
+
+  .close-button {
+    margin: 0 0 0.75rem;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid #d6deea;
+    border-radius: 0.4rem;
+    background: #f7f9fc;
+    color: #182230;
+    font: inherit;
+    cursor: pointer;
+  }
+</style>

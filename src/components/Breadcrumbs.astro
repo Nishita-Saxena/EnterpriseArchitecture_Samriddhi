@@ -1,0 +1,38 @@
+---
+import { getSectionRoute } from '../lib/navigation';
+
+const { section, title } = Astro.props as {
+  section: string;
+  title: string;
+};
+
+const sectionRoute = getSectionRoute(section as 'Executive Summary' | 'Architecture Vision' | 'Architecture Definition' | 'Architecture Governance' | 'Implementation');
+---
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a>
+  <span aria-hidden="true">/</span>
+  <a href={sectionRoute}>{section}</a>
+  <span aria-hidden="true">/</span>
+  <span>{title}</span>
+</nav>
+
+<style>
+  .breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    color: #5f6c7b;
+    font-size: 0.82rem;
+  }
+
+  a {
+    color: #183153;
+    text-decoration: none;
+  }
+
+  .breadcrumbs span:last-child {
+    color: #183153;
+    font-weight: 600;
+  }
+</style>

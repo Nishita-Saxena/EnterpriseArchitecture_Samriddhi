@@ -1,3 +1,12 @@
+---
+title: Risk Register
+description: Programme risks, scores, and mitigation actions for Samriddhi.
+order: 16
+category: architecture-governance
+status: Review
+version: 1.0
+---
+
 # Risk Register
 
 ## Executive Summary

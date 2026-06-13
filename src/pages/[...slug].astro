@@ -1,0 +1,51 @@
+---
+import { getCollection, render } from 'astro:content';
+import MainLayout from '../components/MainLayout.astro';
+import ArchitecturePage from '../components/ArchitecturePage.astro';
+import { getNavigationDocumentByFileKey } from '../lib/navigation';
+
+export async function getStaticPaths() {
+  const documents = await getCollection('architectureDocs');
+
+  return documents.map((entry) => {
+    const navigationDocument = getNavigationDocumentByFileKey(entry.id.replace(/\.md$/i, ''));
+
+    if (!navigationDocument) {
+      throw new Error(`No navigation entry found for content document: ${entry.id}`);
+    }
+
+    return {
+      params: {
+        slug: navigationDocument.route.replace(/^\//, ''),
+      },
+      props: {
+        entry,
+        navigationDocument,
+      },
+    };
+  });
+}
+
+const { entry, navigationDocument } = Astro.props as {
+  entry: Awaited<ReturnType<typeof getCollection>>[number];
+  navigationDocument: {
+    title: string;
+    route: string;
+    section: string;
+  };
+};
+
+const { Content } = await render(entry);
+---
+
+<MainLayout title="Samriddhi Architecture Review Portal" currentSection={navigationDocument.section} activeRoute={navigationDocument.route}>
+  <ArchitecturePage
+    title={entry.data.title}
+    category={entry.data.category}
+    version={String(entry.data.version)}
+    status={entry.data.status}
+    image={entry.data.image}
+  >
+    <Content />
+  </ArchitecturePage>
+</MainLayout>

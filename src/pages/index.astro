@@ -1,17 +1,275 @@
 ---
-
+import MainLayout from '../components/MainLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout
+  title="Samriddhi Architecture Repository"
+  currentSection="Home"
+  activeRoute="/"
+>
+  <section class="home-page">
+
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Enterprise Architecture Repository</p>
+
+        <h1>Samriddhi</h1>
+
+        <p class="hero-description">
+          Digital governance platform for housing societies, municipal
+          authorities, service providers, and residents.
+        </p>
+
+        <p class="hero-subtitle">
+          This repository contains the complete TOGAF-based architecture,
+          governance framework, implementation roadmap, and supporting
+          architecture artifacts for review and approval.
+        </p>
+
+        <div class="hero-actions">
+          <a href="/executive-summary" class="primary-btn">
+            Review Executive Summary
+          </a>
+
+          <a
+            href="/architecture-definition/business-architecture"
+            class="secondary-btn"
+          >
+            Explore Architecture Definition
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="review-areas">
+      <h2>Review Areas</h2>
+
+      <div class="cards">
+
+        <a href="/architecture-vision/problem-analysis" class="review-card">
+          <span class="card-icon">🎯</span>
+          <h3>Architecture Vision</h3>
+          <p>
+            Understand the business problem, stakeholder concerns,
+            architecture principles, and capability requirements.
+          </p>
+        </a>
+
+        <a href="/architecture-definition/business-architecture" class="review-card">
+          <span class="card-icon">🏗️</span>
+          <h3>Architecture Definition</h3>
+          <p>
+            Review business, application, integration,
+            data, technology, and security architectures.
+          </p>
+        </a>
+
+        <a href="/architecture-governance/governance-model" class="review-card">
+          <span class="card-icon">🛡️</span>
+          <h3>Architecture Governance</h3>
+          <p>
+            Review governance controls, architecture decisions,
+            risk management, and benefits oversight.
+          </p>
+        </a>
+
+        <a href="/implementation/implementation-roadmap" class="review-card">
+          <span class="card-icon">🚀</span>
+          <h3>Implementation</h3>
+          <p>
+            Review roadmap, transition planning,
+            implementation phases, and success measures.
+          </p>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="architecture-coverage">
+      <h2>Architecture Coverage</h2>
+
+      <div class="coverage-grid">
+        <div class="coverage-item">✓ Business Architecture</div>
+        <div class="coverage-item">✓ Data Architecture</div>
+        <div class="coverage-item">✓ Application Architecture</div>
+        <div class="coverage-item">✓ Integration Architecture</div>
+        <div class="coverage-item">✓ Technology Architecture</div>
+        <div class="coverage-item">✓ Security Architecture</div>
+      </div>
+    </section>
+
+    <section class="review-flow">
+      <h2>Recommended Review Sequence</h2>
+
+      <div class="flow">
+        <div class="flow-step">
+          <span>1</span>
+          Executive Summary
+        </div>
+
+        <div class="flow-step">
+          <span>2</span>
+          Architecture Vision
+        </div>
+
+        <div class="flow-step">
+          <span>3</span>
+          Architecture Definition
+        </div>
+
+        <div class="flow-step">
+          <span>4</span>
+          Architecture Governance
+        </div>
+
+        <div class="flow-step">
+          <span>5</span>
+          Implementation
+        </div>
+      </div>
+    </section>
+
+  </section>
+</MainLayout>
+
+<style>
+  .home-page {
+    display: grid;
+    gap: 2rem;
+    max-width: 1400px;
+  }
+
+  .hero {
+    background: linear-gradient(
+      135deg,
+      #183153 0%,
+      #24476f 100%
+    );
+    color: white;
+    border-radius: 16px;
+    padding: 3rem;
+  }
+
+  .eyebrow {
+    margin: 0;
+    opacity: 0.8;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .hero h1 {
+    margin: 0.5rem 0 1rem;
+    font-size: 3rem;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    max-width: 850px;
+  }
+
+  .hero-subtitle {
+    max-width: 900px;
+    line-height: 1.8;
+    opacity: 0.9;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    text-decoration: none;
+    padding: 0.85rem 1.25rem;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+
+  .primary-btn {
+    background: white;
+    color: #183153;
+  }
+
+  .secondary-btn {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+  }
+
+  .review-areas,
+  .architecture-coverage,
+  .review-flow {
+    background: white;
+    border: 1px solid #d6deea;
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 1.5rem;
+  }
+
+  .review-card {
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #d6deea;
+    border-radius: 12px;
+    padding: 1.5rem;
+    background: #fafcff;
+  }
+
+  .review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  }
+
+  .card-icon {
+    font-size: 2rem;
+  }
+
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 1rem;
+  }
+
+  .coverage-item {
+    padding: 1rem;
+    background: #f7f9fc;
+    border-radius: 10px;
+    border: 1px solid #d6deea;
+  }
+
+  .flow {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #f7f9fc;
+    border: 1px solid #d6deea;
+    border-radius: 999px;
+    padding: 0.75rem 1rem;
+  }
+
+  .flow-step span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #183153;
+    color: white;
+    font-weight: 700;
+  }
+</style>

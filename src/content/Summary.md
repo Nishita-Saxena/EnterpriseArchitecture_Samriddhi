@@ -1,3 +1,12 @@
+---
+title: Executive Summary
+description: Overview of the Samriddhi programme, business problem, target solution, and expected outcomes.
+order: 1
+category: executive-summary
+status: Review
+version: 1.0
+---
+
 Project: Samriddhi — The Community Grid
 Goal: Transform urban housing society management in India from fragmented,
 manual processes to a structured, intelligent digital ecosystem.

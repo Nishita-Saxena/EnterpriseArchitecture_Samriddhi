@@ -1,3 +1,12 @@
+---
+title: Problem Analysis
+description: Analysis of current challenges in housing society governance and operations.
+order: 2
+category: architecture-vision
+status: Review
+version: 1.0
+---
+
 PROBLEM ANALYSIS:
 
 1. Executive Summary of the Problem:

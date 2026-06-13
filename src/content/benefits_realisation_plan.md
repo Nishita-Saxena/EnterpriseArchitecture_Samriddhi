@@ -1,3 +1,12 @@
+---
+title: Benefits Realisation Plan
+description: Programme benefits, targets, and measurement approach for Samriddhi.
+order: 17
+category: architecture-governance
+status: Review
+version: 1.0
+---
+
 # Benefits Realisation Plan
 
 ## Purpose

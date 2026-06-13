@@ -1,3 +1,12 @@
+---
+title: Success Metrics
+description: Measures used to evaluate Samriddhi programme outcomes.
+order: 20
+category: implementation
+status: Review
+version: 1.0
+---
+
 1. Operational Effectiveness
 SM-01: Incident Resolution Improvement
 

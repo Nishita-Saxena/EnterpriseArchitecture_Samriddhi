@@ -1,0 +1,147 @@
+---
+import { NAVIGATION_DOCUMENTS } from '../lib/navigation';
+---
+
+<div class="search-wrapper">
+  <input
+    id="searchInput"
+    type="text"
+    placeholder="Search architecture artifacts..."
+    autocomplete="off"
+  />
+
+  <div id="searchResults" class="results"></div>
+</div>
+
+<script define:vars={{ docs: NAVIGATION_DOCUMENTS }}>
+  const input = document.getElementById('searchInput');
+  const results = document.getElementById('searchResults');
+
+  input?.addEventListener('input', (event) => {
+    const value = event.target.value.toLowerCase().trim();
+
+    if (!value) {
+      results.innerHTML = '';
+      results.classList.remove('visible');
+      return;
+    }
+
+    const matches = docs.filter((doc) =>
+      doc.title.toLowerCase().includes(value)
+    );
+
+    if (!matches.length) {
+      results.innerHTML =
+        '<div class="empty">No matching architecture artifacts found</div>';
+      results.classList.add('visible');
+      return;
+    }
+
+    results.innerHTML = matches
+      .map(
+        (doc) => `
+          <a href="${doc.route}" class="result">
+            <span class="title">${doc.title}</span>
+            <span class="route">${doc.route}</span>
+          </a>
+        `
+      )
+      .join('');
+
+    results.classList.add('visible');
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.search-wrapper')) {
+      results.innerHTML = '';
+      results.classList.remove('visible');
+    }
+  });
+</script>
+
+<style>
+  .search-wrapper {
+    position: relative;
+    width: 420px;
+    max-width: 100%;
+  }
+
+  #searchInput {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.85rem 1rem;
+    border: 1px solid #d6deea;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #182230;
+    font-size: 0.95rem;
+    outline: none;
+  }
+
+  #searchInput:focus {
+    border-color: #183153;
+    box-shadow: 0 0 0 3px rgba(24, 49, 83, 0.08);
+  }
+
+  .results {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #d6deea;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.15);
+    z-index: 9999;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .results.visible {
+    display: block;
+  }
+
+  .result {
+    display: block;
+    padding: 0.9rem 1rem;
+    text-decoration: none;
+    border-bottom: 1px solid #eef2f7;
+    transition: background-color 0.15s ease;
+  }
+
+  .result:last-child {
+    border-bottom: none;
+  }
+
+  .result:hover {
+    background: #f6f9fc;
+  }
+
+  .title {
+    display: block;
+    color: #182230;
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+
+  .route {
+    display: block;
+    margin-top: 0.25rem;
+    color: #667085;
+    font-size: 0.75rem;
+  }
+
+  .empty {
+    padding: 1rem;
+    color: #667085;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 900px) {
+    .search-wrapper {
+      width: 100%;
+    }
+  }
+</style>

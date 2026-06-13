@@ -1,3 +1,13 @@
+---
+title: Data Architecture
+description: Service-owned, polyglot data architecture for the Samriddhi platform.
+order: 9
+category: architecture-definition
+image: /images/data_arc.png
+status: Review
+version: 1.0
+---
+
 Data Architecture Overview
 
 The Samriddhi data architecture is designed around three core principles: data minimization, service ownership, and polyglot persistence. Each application service owns its data and manages its lifecycle independently. Direct database access across services is prohibited; all cross-service interactions occur through secured APIs.
