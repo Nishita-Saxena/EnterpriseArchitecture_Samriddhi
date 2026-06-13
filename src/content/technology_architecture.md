@@ -8,109 +8,143 @@ status: Review
 version: 1.0
 ---
 
-3.4 Technology Architecture
-Overview
+# 3.4 Technology Architecture
 
-The Samriddhi Technology Architecture provides the infrastructure required to support application services, data platforms, IoT devices, and external integrations. The architecture is designed around three principles: resilience, scalability, and security.
+## Overview
 
-A hybrid cloud deployment model is adopted, with AWS Mumbai serving as the primary operational environment, Azure Central India providing disaster recovery capabilities, and MeghRaj supporting government-regulated municipal data where required.
+The Samriddhi Technology Architecture provides the infrastructure foundation for application services, data platforms, IoT devices, blockchain workloads, and external integrations.
 
-Cloud Infrastructure
+The architecture is designed around three core principles:
 
-AWS serves as the primary cloud platform for application hosting, databases, Kubernetes orchestration, blockchain services, and IoT management.
+* Resilience
+* Scalability
+* Security
 
-Azure is used for disaster recovery and backup operations.
+A hybrid cloud model is adopted, with AWS Mumbai serving as the primary operational environment, Azure Central India providing disaster recovery capabilities, and MeghRaj supporting government-regulated municipal workloads where required.
 
-MeghRaj is reserved for sensitive municipal compliance data subject to government hosting requirements.
+---
 
-Compute Infrastructure
+## Cloud Infrastructure
 
-All application services are deployed as Docker containers on Kubernetes using AWS Elastic Kubernetes Service (EKS).
+| Platform            | Purpose                                                                          |
+| ------------------- | -------------------------------------------------------------------------------- |
+| AWS Mumbai          | Primary application hosting, databases, Kubernetes, blockchain, and IoT services |
+| Azure Central India | Disaster recovery and backup environment                                         |
+| MeghRaj             | Government-regulated municipal data hosting                                      |
+
+---
+
+## Compute Infrastructure
+
+All application services are deployed as Docker containers on AWS Elastic Kubernetes Service (EKS).
 
 Kubernetes provides:
 
-Automatic scaling
-Self-healing
-Rolling deployments
-Resource management
-High availability
+* Automatic scaling
+* Self-healing
+* Rolling deployments
+* Resource management
+* High availability
 
 Container images are stored in AWS Elastic Container Registry (ECR).
 
-Database Infrastructure
+---
 
-The platform uses multiple database technologies optimized for specific workloads:
+## Database Infrastructure
 
-PostgreSQL for transactional data
-MongoDB for flexible document storage
-InfluxDB for IoT time-series data
-Redis for caching and session management
-Hyperledger Fabric for immutable blockchain records
+The platform uses multiple database technologies optimized for specific workloads.
 
-Database services are deployed with redundancy, backup, and failover mechanisms to support business continuity.
+| Technology         | Purpose                        |
+| ------------------ | ------------------------------ |
+| PostgreSQL         | Transactional data             |
+| MongoDB            | Document storage               |
+| InfluxDB           | IoT time-series data           |
+| Redis              | Caching and session management |
+| Hyperledger Fabric | Immutable blockchain records   |
 
-Network Architecture
+All database platforms are deployed with redundancy, backup, and failover mechanisms to support business continuity.
 
-The platform operates within a dedicated AWS Virtual Private Cloud (VPC) with network segmentation across:
+---
 
-Public Subnet
-Private Application Subnet
-Private Data Subnet
-Blockchain Subnet
+## Network Architecture
 
-External traffic enters through AWS Application Load Balancer and Kong API Gateway.
+The platform operates within a dedicated AWS Virtual Private Cloud (VPC) with segmented network zones:
 
-AWS CloudFront accelerates content delivery, while Route 53 provides DNS management and failover routing.
+* Public Subnet
+* Private Application Subnet
+* Private Data Subnet
+* Blockchain Subnet
 
-IoT Infrastructure
+External traffic is routed through:
 
-The IoT platform manages 500 sensors across pilot societies.
+* AWS Application Load Balancer
+* Kong API Gateway
 
-Components include:
+Supporting services include:
 
-Water level sensors
-Vibration sensors
-Air quality sensors
-Power consumption sensors
+* AWS CloudFront for content delivery
+* Route 53 for DNS management and failover routing
 
-Sensor data is transmitted through Raspberry Pi edge gateways to AWS IoT Core using MQTT over TLS.
+---
 
-The platform supports:
+## IoT Infrastructure
 
-Device provisioning
-Firmware updates
-Device health monitoring
-Local buffering during connectivity loss
-Edge anomaly detection
-Security Controls
+The pilot deployment supports 500 sensors across participating housing societies.
 
-Technology-layer security includes:
+### Sensor Types
 
-TLS 1.3 encryption
-X.509 certificate-based device authentication
-Network segmentation
-Private subnet isolation
-Managed secrets storage
-Automated backup and recovery
+* Water Level Sensors
+* Vibration Sensors
+* Air Quality Sensors
+* Power Consumption Sensors
 
-These controls protect infrastructure, communications, and operational data.
+### IoT Platform Capabilities
 
-Disaster Recovery
+* Device provisioning
+* Firmware updates
+* Device health monitoring
+* Local buffering during connectivity loss
+* Edge anomaly detection
 
-The disaster recovery strategy targets:
+Sensor telemetry is transmitted through Raspberry Pi edge gateways to AWS IoT Core using MQTT over TLS.
 
-Recovery Time Objective (RTO): 4 hours
-Recovery Point Objective (RPO): 1 hour
+---
 
-Key recovery mechanisms include:
+## Security Controls
 
-Hourly database replication to Azure
-AWS Multi-AZ database failover
-Kubernetes pod self-recovery
-DNS failover through Route 53
+Technology-layer security controls include:
 
-These capabilities ensure service continuity during infrastructure failures or regional outages.
+* TLS 1.3 encryption
+* X.509 certificate-based device authentication
+* Network segmentation
+* Private subnet isolation
+* Managed secrets storage
+* Automated backup and recovery
 
-Outcome
+These controls protect infrastructure, communications, and operational data across the platform.
 
-The Technology Architecture provides a secure, scalable, and resilient infrastructure foundation capable of supporting platform operations, IoT services, blockchain workloads, and future expansion across housing societies while maintaining high availability and disaster recovery readiness.
+---
+
+## Disaster Recovery
+
+### Recovery Objectives
+
+| Metric                         | Target  |
+| ------------------------------ | ------- |
+| Recovery Time Objective (RTO)  | 4 Hours |
+| Recovery Point Objective (RPO) | 1 Hour  |
+
+### Recovery Mechanisms
+
+* Hourly database replication to Azure
+* AWS Multi-AZ database failover
+* Kubernetes pod self-recovery
+* Route 53 DNS failover
+
+These capabilities support service continuity during infrastructure failures and regional outages.
+
+---
+
+## Summary
+
+The technology architecture establishes a secure, scalable, and resilient infrastructure foundation capable of supporting platform operations, IoT services, blockchain workloads, and future expansion while maintaining high availability and disaster recovery readiness.

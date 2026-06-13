@@ -6,206 +6,388 @@ const { activeRoute = '/' } = Astro.props as {
 };
 
 function isActive(route: string) {
-  return activeRoute === route || (route !== '/' && activeRoute.startsWith(route + '/'));
+  return (
+    activeRoute === route ||
+    (route !== '/' && activeRoute.startsWith(route + '/'))
+  );
 }
 ---
 
 <aside class="sidebar" aria-label="Architecture navigation">
+
   <div class="brand">
     <p class="eyebrow">Enterprise Architecture</p>
     <h2>Samriddhi</h2>
     <p class="subtitle">Architecture Review Portal</p>
   </div>
 
-  <nav class="navigation" id="navigation-panel">
+  <nav
+    class="navigation"
+    id="navigation-panel"
+  >
     <ul class="tree">
+
       {NAVIGATION_TREE.map((section) => {
         const expanded =
-          section.items?.some((item) => isActive(item.route)) ?? false;
+          section.items?.some((item) =>
+            isActive(item.route)
+          ) ?? false;
 
         return (
           <li class="section-group">
+
             {section.items ? (
+
               <details open={expanded}>
-                <summary>{section.label}</summary>
+
+                <summary>
+                  {section.label}
+                </summary>
 
                 <ul class="section-items">
+
                   {section.items.map((item) => (
+
                     <li>
+
                       <a
+                        href={item.route}
                         class:list={[
                           'item',
-                          isActive(item.route) && 'active',
+                          isActive(item.route) &&
+                            'active',
                         ]}
-                        href={item.route}
                         aria-current={
-                          isActive(item.route) ? 'page' : undefined
+                          isActive(item.route)
+                            ? 'page'
+                            : undefined
                         }
                       >
                         {item.title}
                       </a>
+
                     </li>
+
                   ))}
+
                 </ul>
+
               </details>
+
             ) : (
+
               <a
-                class:list={['root', isActive(section.route) && 'active']}
                 href={section.route}
+                class:list={[
+                  'root',
+                  isActive(section.route) &&
+                    'active',
+                ]}
               >
                 {section.label}
               </a>
+
             )}
+
           </li>
         );
       })}
+
     </ul>
   </nav>
 
   <div class="footer">
     <p>TOGAF Architecture Repository</p>
   </div>
+
 </aside>
 
 <script>
   window.addEventListener('load', () => {
-    const navigation = document.getElementById('navigation-panel');
+
+    const navigation =
+      document.getElementById(
+        'navigation-panel'
+      );
 
     if (!navigation) return;
 
-    const savedPosition = sessionStorage.getItem('sidebar-scroll');
+    const savedPosition =
+      sessionStorage.getItem(
+        'sidebar-scroll'
+      );
 
     if (savedPosition) {
-      navigation.scrollTop = Number(savedPosition);
+      navigation.scrollTop =
+        Number(savedPosition);
     }
 
-    navigation.addEventListener('scroll', () => {
-      sessionStorage.setItem(
-        'sidebar-scroll',
-        String(navigation.scrollTop)
-      );
-    });
+    navigation.addEventListener(
+      'scroll',
+      () => {
+
+        sessionStorage.setItem(
+          'sidebar-scroll',
+          String(navigation.scrollTop)
+        );
+
+      }
+    );
+
   });
 </script>
 
 <style>
+
+.sidebar {
+
+  display: flex;
+  flex-direction: column;
+
+  width: 280px;
+  min-height: 100vh;
+
+  background: #ffffff;
+
+  border-right:
+    1px solid #e5e7eb;
+
+  color: #0f172a;
+
+  overflow: hidden;
+}
+
+.brand {
+
+  padding:
+    1.5rem
+    1.5rem
+    1.25rem;
+
+  border-bottom:
+    1px solid #f1f5f9;
+}
+
+.eyebrow {
+
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 0.68rem;
+
+  font-weight: 700;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+}
+
+h2 {
+
+  margin:
+    .45rem 0 0;
+
+  font-size: 1.35rem;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  color: #0f172a;
+}
+
+.subtitle {
+
+  margin:
+    .3rem 0 0;
+
+  color: #64748b;
+
+  font-size: .88rem;
+}
+
+.navigation {
+
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding:
+    .75rem;
+}
+
+.tree,
+.tree ul {
+
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+.section-group {
+  margin-bottom: .25rem;
+}
+
+details {
+  margin: 0;
+}
+
+summary {
+
+  list-style: none;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 40px;
+
+  padding:
+    .65rem
+    .85rem;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  color: #334155;
+
+  font-size: .92rem;
+
+  font-weight: 600;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary:hover {
+  background: #f8fafc;
+}
+
+.section-items {
+
+  margin-top: .15rem;
+
+  margin-left: .9rem;
+
+  padding-left: .9rem;
+
+  border-left:
+    1px solid #e2e8f0;
+}
+
+.section-items li {
+  margin: .1rem 0;
+}
+
+.item {
+
+  display: block;
+
+  padding:
+    .55rem
+    .75rem;
+
+  border-radius: 8px;
+
+  color: #475569;
+
+  font-size: .9rem;
+
+  text-decoration: none;
+}
+
+.item:hover {
+
+  background: #f8fafc;
+
+  color: #0f172a;
+}
+
+.item.active {
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  font-weight: 600;
+}
+
+.root {
+
+  display: block;
+
+  padding:
+    .65rem
+    .85rem;
+
+  border-radius: 10px;
+
+  color: #334155;
+
+  font-size: .92rem;
+
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.root:hover {
+  background: #f8fafc;
+}
+
+.root.active {
+
+  background: #eff6ff;
+
+  color: #2563eb;
+}
+
+.footer {
+
+  padding:
+    1rem
+    1.5rem;
+
+  border-top:
+    1px solid #f1f5f9;
+}
+
+.footer p {
+
+  margin: 0;
+
+  color: #94a3b8;
+
+  font-size: .75rem;
+}
+
+.navigation::-webkit-scrollbar {
+  width: 6px;
+}
+
+.navigation::-webkit-scrollbar-thumb {
+
+  background: #dbe4ee;
+
+  border-radius: 999px;
+}
+
+.navigation::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (max-width: 900px) {
+
   .sidebar {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
     width: 320px;
-    padding: 1.25rem;
-    border-right: 1px solid #d6deea;
-    background: #ffffff;
-    color: #182230;
   }
 
   .brand {
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e4eaf2;
+    padding-top: 4.5rem;
   }
+}
 
-  .eyebrow {
-    margin: 0;
-    color: #667085;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  h2 {
-    margin: 0.35rem 0 0;
-    font-size: 1.25rem;
-  }
-
-  .subtitle {
-    margin: 0.25rem 0 0;
-    color: #667085;
-  }
-
-  .navigation {
-    flex: 1;
-    overflow-y: auto;
-    padding-right: 0.25rem;
-  }
-
-  .tree,
-  .tree ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .tree {
-    display: grid;
-    gap: 0.5rem;
-  }
-
-  details {
-    border-radius: 8px;
-  }
-
-  summary {
-    cursor: pointer;
-    padding: 0.65rem 0.75rem;
-    border-radius: 8px;
-    font-weight: 700;
-    user-select: none;
-  }
-
-  summary:hover {
-    background: #f7f9fc;
-  }
-
-  .section-items {
-    margin-top: 0.25rem;
-    padding-left: 0.75rem;
-    display: grid;
-    gap: 0.15rem;
-  }
-
-  .item {
-    display: block;
-    padding: 0.45rem 0.75rem;
-    border-radius: 6px;
-    color: #304255;
-    text-decoration: none;
-  }
-
-  .item:hover {
-    background: #f7f9fc;
-  }
-
-  .item.active {
-  background: #183153;
-  color: white;
-  font-weight: 600;
-  }
-
-  .root {
-    display: block;
-    padding: 0.65rem 0.75rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    color: #182230;
-  }
-
-  .root:hover {
-    background: #f7f9fc;
-  }
-
-  .footer {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #e4eaf2;
-  }
-
-  .footer p {
-    margin: 0;
-    font-size: 0.8rem;
-    color: #667085;
-  }
 </style>

@@ -7,92 +7,119 @@ image: /images/integration_arc.png
 status: Review
 version: 1.0
 ---
+# Integration Architecture
 
-Integration Architecture
-Overview
+## Overview
 
 The Samriddhi Integration Architecture enables secure, real-time communication between internal platform services and external stakeholders including municipal corporations, insurance providers, payment gateways, government identity services, and IoT infrastructure.
 
-The architecture follows an API-first approach where all integrations occur through documented and versioned APIs. Direct database connectivity and file-based batch exchanges are not permitted. Internal services communicate asynchronously through Apache Kafka to ensure loose coupling and operational resilience.
+The architecture follows an API-first model where all integrations occur through documented and versioned APIs. Direct database access and file-based batch exchanges are prohibited. Internal services communicate asynchronously through Apache Kafka to ensure loose coupling, scalability, and operational resilience.
 
-Internal Integration
+---
 
-Samriddhi uses Apache Kafka as the central event backbone for service-to-service communication.
+## Internal Integration
 
-Key events include:
+Apache Kafka serves as the central event backbone for service-to-service communication.
 
-incident.created
-incident.status_updated
-vendor.assigned
-sla.breached
-sensor.anomaly_detected
-compliance.deadline_approaching
-incident.closed
+Representative business events include:
 
-Services publish events when business activities occur and subscribing services process those events independently. This eliminates direct service dependencies and improves fault tolerance.
+* incident.created
+* incident.status_updated
+* vendor.assigned
+* sla.breached
+* sensor.anomaly_detected
+* compliance.deadline_approaching
+* incident.closed
 
-Municipal Corporation Integration
+Services publish events independently while subscribing services process them asynchronously, reducing direct dependencies and improving fault tolerance.
 
-Municipal integration supports compliance reporting, property verification, NOC tracking, inspector scheduling, and urban planning statistics.
+---
 
-Implementation follows a phased approach:
+## External Integrations
 
-Phase 1: Manual workflow using generated PDF reports.
-Phase 2: SOAP adapter integration for legacy systems.
-Phase 3: Full bidirectional REST integration.
+| Integration Domain           | Purpose                                                        | Approach                                                   |
+| ---------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------- |
+| Municipal Corporations       | Compliance reporting, NOC tracking, inspections, planning data | Phased integration from manual reporting to full REST APIs |
+| Insurance Providers          | Claims processing and evidence verification                    | Secure APIs with blockchain-backed evidence validation     |
+| Payment Gateways             | Vendor payments and fee processing                             | Razorpay with PayU backup                                  |
+| Government Identity Services | Resident verification                                          | DigiLocker, Aadhaar OTP, and Phone OTP                     |
+| IoT Infrastructure           | Device telemetry and predictive monitoring                     | AWS IoT Core, MQTT, Apache Flink                           |
+
+---
+
+## Municipal Corporation Integration
+
+Implementation follows a phased adoption model:
+
+* Phase 1: Manual workflows using generated reports
+* Phase 2: SOAP-based integration with legacy systems
+* Phase 3: Bidirectional REST API integration
 
 Target municipal bodies include GHMC, BMC, and PMC.
 
-Insurance Provider Integration
+---
 
-Insurance providers access blockchain-verified evidence packages through secured APIs.
+## Insurance Provider Integration
 
 Capabilities include:
 
-Claim initiation
-Evidence retrieval
-Blockchain verification
-Claim status updates
-Settlement confirmation
+* Claim initiation
+* Evidence retrieval
+* Blockchain verification
+* Claim status updates
+* Settlement confirmation
 
 All communications use Mutual TLS (mTLS) authentication.
 
-Payment Gateway Integration
+---
 
-Payment processing is integrated through Razorpay with PayU as backup.
+## Payment and Identity Integration
 
-Supported functions include:
+### Payment Processing
 
-Vendor payment release
-Subscription fee collection
-Maintenance fee visibility
+* Razorpay (Primary)
+* PayU (Backup)
 
-Payment credentials are protected using HashiCorp Vault and no card data is stored within Samriddhi.
+Supported functions:
 
-Government Identity Integration
+* Vendor payment release
+* Subscription fee collection
+* Maintenance fee visibility
+
+Payment credentials are managed through HashiCorp Vault, and no card data is stored within the platform.
+
+### Identity Verification
 
 Resident verification is supported through:
 
-DigiLocker
-Aadhaar OTP
-Phone OTP
+* DigiLocker
+* Aadhaar OTP
+* Phone OTP
 
-The platform stores only verification status and NCRID identifiers, ensuring compliance with data minimization principles.
+Only verification status and NCRID identifiers are retained in accordance with data minimization principles.
 
-IoT Integration
+---
+
+## IoT Integration
 
 AWS IoT Core manages device onboarding, monitoring, firmware updates, and telemetry ingestion.
 
-Sensor data is transmitted using MQTT over TLS and processed through Apache Flink. Detected anomalies generate Kafka events that can automatically create predictive incidents.
+Sensor data is transmitted using MQTT over TLS and processed through Apache Flink. Detected anomalies generate Kafka events that can automatically initiate predictive incident workflows.
 
-Integration Principles
-API-First Integration
-No Direct Database Access
-Event-Driven Communication
-Idempotent Operations
-API Versioning
-Circuit Breaker Pattern
-Secure Authentication and Encryption
-Outcome
+---
 
-The integration architecture provides a scalable and resilient framework that connects Samriddhi with municipal authorities, insurance providers, payment systems, identity services, and IoT platforms while maintaining security, interoperability, and operational independence.
+## Integration Principles
+
+* API-First Integration
+* No Direct Database Access
+* Event-Driven Communication
+* Idempotent Operations
+* API Versioning
+* Circuit Breaker Pattern
+* Secure Authentication and Encryption
+
+---
+
+## Summary
+
+The integration architecture provides a secure and scalable framework for connecting platform services with municipal authorities, insurers, payment systems, identity providers, and IoT infrastructure while maintaining interoperability, operational independence, and security.

@@ -6,163 +6,151 @@ category: implementation
 status: Review
 version: 1.0
 ---
+# Implementation Roadmap
 
- Implementation Roadmap
+## Overview
 
- Overview
-
-The implementation roadmap follows a phased delivery approach aligned with the TOGAF Architecture Development Method (ADM). The programme is structured over 18 months, progressing from governance establishment and architecture definition to platform deployment, intelligence enablement, and ecosystem-scale adoption across the pilot scope of 250 housing societies.
+The implementation roadmap follows a phased delivery approach aligned with the TOGAF Architecture Development Method (ADM). Over 18 months, the programme progresses from governance establishment and architecture definition to platform deployment, intelligence enablement, and ecosystem-scale adoption across 250 housing societies.
 
 ---
 
- Phase 0: Foundation and Architecture Establishment (Months 1–3)
+## Phase 0: Foundation and Architecture Establishment (Months 1–3)
 
- Objective
+**Objective:** Establish governance, define architecture baselines, and secure stakeholder alignment.
 
-Establish governance structures, define architecture baselines, and secure stakeholder alignment.
+**Key Activities**
 
- Key Activities
-
-* Establish the Architecture Review Board (ARB), including governance charter, decision rights, and review processes.
+* Establish the Architecture Review Board (ARB), governance charter, and review processes.
 * Define architecture principles, standards, and reference models.
-* Conduct baseline (As-Is) assessments across 50 representative housing societies.
-* Perform gap analysis between baseline and target architectures.
-* Develop migration priorities and transition plans.
-* Secure alignment from Resident Welfare Associations (RWAs), Property Management Companies (PMCs), and municipal stakeholders.
+* Conduct baseline assessments across representative housing societies.
+* Perform gap analysis and define migration priorities.
+* Secure alignment from RWAs, PMCs, and municipal stakeholders.
 
- Deliverables
+**Key Deliverables**
 
-* ARB governance charter.
-* Baseline Architecture Assessment.
-* Target Architecture Definition.
-* Gap Analysis and Migration Roadmap.
-* Stakeholder commitment approvals.
+* ARB Governance Charter
+* Baseline and Target Architecture Definitions
+* Gap Analysis and Migration Roadmap
+* Stakeholder Commitment Approvals
 
- Success Criteria
+**Success Criteria**
 
-* Governance structure operational.
-* Baseline and target architectures approved.
-* Stakeholder commitment secured.
+* Governance structure operational
+* Architecture baseline approved
+* Stakeholder alignment secured
 
 ---
 
- Phase 1: Core Platform Implementation (Months 4–9)
+## Phase 1: Core Platform Implementation (Months 4–9)
 
- Objective
+**Objective:** Deploy foundational platform capabilities and validate the solution through an initial pilot.
 
-Deploy foundational platform capabilities and validate the solution through an initial pilot.
-
- Key Activities
+**Key Activities**
 
 * Implement Incident Management, Resident Engagement, Vendor Management, and Compliance Tracking modules.
-* Deploy Zero Trust security controls, Identity and Access Management (Keycloak), and Security Information and Event Management (Splunk).
-* Establish the National Community Resident ID specification and federated identity services.
-* Develop municipal integration adapters and insurance workflow integrations.
-* Execute pilot deployment across 10 societies and collect structured feedback.
+* Deploy Zero Trust security controls, Keycloak, and Splunk.
+* Establish NCRID and federated identity services.
+* Develop municipal and insurance integration capabilities.
+* Execute pilot deployment and collect operational feedback.
 
- Deliverables
+**Key Deliverables**
 
-* Operational core platform.
-* Identity and security services.
-* Municipal and insurance integration components.
-* Pilot deployment report.
+* Operational core platform
+* Identity and security services
+* Integration components
+* Pilot deployment report
 
- Success Criteria
+**Success Criteria**
 
-* Platform operational in 10 pilot societies.
-* Security baseline established.
-* Identity specification published.
-* External integrations validated.
-
----
-
- Phase 2: Intelligence and Automation Enablement (Months 10–14)
-
- Objective
-
-Introduce predictive capabilities, operational intelligence, and evidence management services.
-
- Key Activities
-
-* Deploy IoT sensors for water level, air quality, power, and vibration monitoring across 50 societies.
-* Implement AI/ML-based predictive maintenance and anomaly detection capabilities.
-* Establish blockchain-backed evidence registry with immutable audit trails.
-* Integrate municipal digital platforms and governance services.
-* Expand the vendor ecosystem through marketplace onboarding and SLA validation.
-
- Deliverables
-
-* IoT monitoring infrastructure.
-* Predictive analytics capability.
-* Evidence registry platform.
-* Municipal integration services.
-* Vendor marketplace onboarding framework.
-
- Success Criteria
-
-* Predictive incident monitoring operational.
-* Insurance claim processing support strengthened through auditable evidence.
-* Vendor performance tracking enabled.
-* Municipal integrations active within pilot environments.
+* Platform operational within pilot societies
+* Security baseline established
+* Identity framework operational
+* External integrations validated
 
 ---
 
- Phase 3: Ecosystem Expansion and Benefits Realisation (Months 15–18)
+## Phase 2: Intelligence and Automation Enablement (Months 10–14)
 
- Objective
+**Objective:** Introduce predictive capabilities, operational intelligence, and evidence management services.
 
-Scale the platform across the full pilot scope and validate business outcomes.
+**Key Activities**
 
- Key Activities
+* Deploy IoT monitoring infrastructure.
+* Implement predictive analytics and anomaly detection.
+* Establish blockchain-backed evidence management.
+* Expand municipal integrations and vendor onboarding.
+* Enable SLA monitoring and operational intelligence capabilities.
 
-* Expand deployment to 250 societies covering approximately 180,000 residential units.
-* Launch vendor marketplace capabilities including performance scorecards and competitive bidding.
-* Enable end-to-end insurance integration workflows.
-* Deploy operational and governance analytics dashboards.
+**Key Deliverables**
+
+* IoT monitoring platform
+* Predictive analytics capability
+* Blockchain evidence registry
+* Municipal integration services
+* Vendor marketplace framework
+
+**Success Criteria**
+
+* Predictive monitoring operational
+* Evidence-driven claim support enabled
+* Vendor performance tracking active
+* Municipal integrations functioning within pilot environments
+
+---
+
+## Phase 3: Ecosystem Expansion and Benefits Realisation (Months 15–18)
+
+**Objective:** Scale the platform across the full pilot scope and validate business outcomes.
+
+**Key Activities**
+
+* Expand deployment across the pilot ecosystem.
+* Launch marketplace capabilities and competitive vendor engagement.
+* Enable end-to-end insurance workflows.
+* Deploy operational and governance analytics.
 * Conduct benefits realisation assessment and define the national rollout roadmap.
 
- Deliverables
+**Key Deliverables**
 
-* Scaled platform deployment.
-* Benefits Realisation Report.
-* Nationwide Rollout Roadmap.
-* Stakeholder Performance Dashboards.
+* Scaled platform deployment
+* Benefits Realisation Report
+* Nationwide Rollout Roadmap
+* Stakeholder Analytics Dashboards
 
- Success Criteria
+**Success Criteria**
 
-* 250 societies onboarded.
-* 180,000 residential units served.
-* Benefits realisation assessment completed.
-* National expansion roadmap approved.
-
----
- Continuous Governance and Programme Activities
-
-The following activities remain active throughout all implementation phases:
-
- Architecture Governance
-
-* Monthly Architecture Review Board meetings.
-* Architecture compliance reviews and decision tracking.
-
- Change Management
-
-* Training programmes for residents, RWA executives, PMC personnel, and vendors.
-* Stakeholder engagement and adoption monitoring.
-
- Risk Management
-
-* Bi-weekly risk assessment and mitigation reviews.
-* Continuous monitoring of programme dependencies and issues.
-
- Security and Compliance
-
-* Quarterly penetration testing.
-* Compliance audits aligned with ISO 27001 and DPDPA requirements.
-
- Communication Management
-
-* Regular stakeholder communications, progress reporting, town halls, and feedback cycles.
+* Pilot deployment completed
+* Full operational capability established
+* Benefits assessment completed
+* National expansion roadmap approved
 
 ---
 
+## Continuous Programme Activities
+
+The following activities remain active throughout all phases:
+
+### Architecture Governance
+
+* Architecture Review Board meetings
+* Compliance reviews and decision tracking
+
+### Change Management
+
+* Stakeholder training and adoption support
+* Engagement and communication activities
+
+### Risk Management
+
+* Risk assessment and mitigation reviews
+* Dependency and issue monitoring
+
+### Security and Compliance
+
+* Penetration testing
+* Compliance audits and control reviews
+
+### Communication Management
+
+* Progress reporting
+* Stakeholder updates, town halls, and feedback cycles
