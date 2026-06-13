@@ -130,12 +130,73 @@ const {
           padding: 1rem;
         }
       }
+      .mobile-menu-toggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
+
+  .mobile-menu-toggle {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 9999;
+
+    padding: 0.75rem 1rem;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: white;
+    color: var(--primary);
+
+    font-weight: 600;
+
+    box-shadow: var(--shadow);
+  }
+
+  .sidebar-region {
+    position: fixed;
+    left: -340px;
+    top: 0;
+
+    width: 320px;
+    height: 100vh;
+
+    z-index: 9998;
+
+    background: white;
+
+    transition: left 0.25s ease;
+  }
+
+  .sidebar-region.mobile-open {
+    left: 0;
+  }
+
+  .main-column {
+    width: 100%;
+  }
+}
     </style>
   </head>
 
   <body>
+
+    <button
+      id="mobile-menu-toggle"
+      class="mobile-menu-toggle"
+      aria-label="Open navigation"
+    >
+      ☰ Menu
+    </button>
+
     <div class="layout">
-      <aside class="sidebar-region">
+      <aside
+        class="sidebar-region"
+        id="sidebar-region"
+      >
         <Sidebar activeRoute={activeRoute} />
       </aside>
 
@@ -147,5 +208,13 @@ const {
         </main>
       </div>
     </div>
+    <script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const sidebar = document.getElementById('sidebar-region');
+
+  toggle?.addEventListener('click', () => {
+    sidebar?.classList.toggle('mobile-open');
+  });
+</script>
   </body>
 </html>
